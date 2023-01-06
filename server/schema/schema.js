@@ -58,7 +58,7 @@ const RootQuery = new GraphQLObjectType({
       },
     },
     project: {
-      type: ClientType,
+      type: ProjectType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return Project.findById(args.id);
@@ -94,9 +94,7 @@ const mutation = new GraphQLObjectType({
     deleteClient: {
       type: ClientType,
       args: {
-        id: {
-          type: GraphQLID,
-        },
+        id: { type: GraphQLID },
       },
       resolve(parent, args) {
         return Client.findByIdAndRemove(args.id);
